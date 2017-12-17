@@ -24,10 +24,7 @@ App = {
   },
 
   initWeb3: function() {
-    /*
-     * Replace me...
-     */
-	  // Is there is an injected web3 instance?
+    // Is there is an injected web3 instance?
 	if (typeof web3 !== 'undefined') {
 	  App.web3Provider = web3.currentProvider;
 	} else {
@@ -36,27 +33,21 @@ App = {
 	}
 	web3 = new Web3(App.web3Provider);
 
-
     return App.initContract();
   },
 
   initContract: function() {
-    /*
-     * Replace me...
-     */
-	  $.getJSON('Adoption.json', function(data) {
+	$.getJSON('Adoption.json', function(data) {
 	  // Get the necessary contract artifact file and instantiate it with truffle-contract
 	  var AdoptionArtifact = data;
 	  App.contracts.Adoption = TruffleContract(AdoptionArtifact);
 
-	  // Set the provider for our contract
-	  App.contracts.Adoption.setProvider(App.web3Provider);
+  // Set the provider for our contract
+  App.contracts.Adoption.setProvider(App.web3Provider);
 
-	  // Use our contract to retrieve and mark the adopted pets
-	  return App.markAdopted();
-	});
-  
-  
+  // Use our contract to retrieve and mark the adopted pets
+  return App.markAdopted();
+});
 
     return App.bindEvents();
   },
@@ -66,10 +57,7 @@ App = {
   },
 
   markAdopted: function(adopters, account) {
-    /*
-     * Replace me...
-     */
-	  var adoptionInstance;
+    	var adoptionInstance;
 
 	App.contracts.Adoption.deployed().then(function(instance) {
 	  adoptionInstance = instance;
@@ -85,19 +73,14 @@ App = {
 	  console.log(err.message);
 	});
 
-
-	  },
+  },
 
   handleAdopt: function(event) {
     event.preventDefault();
 
     var petId = parseInt($(event.target).data('id'));
 
-    /*
-     * Replace me...
-     */
- 
-	var adoptionInstance;
+	    var adoptionInstance;
 
 	web3.eth.getAccounts(function(error, accounts) {
 	  if (error) {
@@ -117,8 +100,7 @@ App = {
 	    console.log(err.message);
 	  });
 	});
-
- }
+  }
 
 };
 
