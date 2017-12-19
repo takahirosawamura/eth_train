@@ -1,5 +1,5 @@
 var Adoption = artifacts.require("Adoption");
 
-module.exports = (deployer) => {
+module.exports = (deployer) {
  　deployer.deploy(Adoption);
  };
